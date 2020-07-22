@@ -1,0 +1,27 @@
+<p class="mat-display-2">
+    Enregistrer un nouveau livre
+</p>
+
+<form [formGroup]="bookForm" (ngSubmit)="onSaveBook()" class="form">
+    <div>
+        <mat-form-field appearance="legacy" class="full-width">
+            <mat-label>Titre</mat-label>
+            <input matInput formControlName="title">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="legacy" class="full-width">
+            <mat-label>Auteur</mat-label>
+            <input matInput formControlName="author">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="legacy" class="full-width">
+            <mat-label>Synopsis</mat-label>
+            <textarea matInput formControlName="synopsis"></textarea>
+        </mat-form-field>
+    </div>
+
+    
+    <button mat-raised-button type="submit" [disabled]="bookForm.invalid" color="primary">Enregistrer</button>
+</form>
