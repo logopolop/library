@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "mylibrary-9260c": {
+      "hosting": {
+        "my-library": [
+          "mylibrary-9260c"
+        ]
+      }
+    }
+  }
+}
