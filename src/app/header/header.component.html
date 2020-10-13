@@ -1,7 +1,19 @@
-<mat-toolbar color="warn">
+<mat-toolbar color="primary">
     <span>My Library</span>
     <span class="spacer"></span>
     <button mat-button routerLink="/books">
       <mat-icon>home</mat-icon> Accueil
+    </button>
+    <button mat-button routerLink="/books">
+      <mat-icon>book</mat-icon> Ajouter un livre
+    </button>
+    <button mat-button *ngIf="!isAuth" routerLink="/auth/signup">
+      <mat-icon>person_add</mat-icon> Inscription
+    </button>
+    <button mat-button *ngIf="!isAuth" routerLink="/auth/signin">
+      <mat-icon>person</mat-icon> Connexion
+    </button>
+    <button mat-button *ngIf="isAuth" (click)="onSignOut()">
+      <mat-icon>input</mat-icon> Déconnexion
     </button>
 </mat-toolbar>

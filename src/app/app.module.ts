@@ -1,35 +1,41 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-//AngularFire
-import { AngularFireModule } from '@angular/fire';
-
 //Material Module 
 import { MaterialModule } from './material.module';
 
+import { AppComponent } from './app.component';
 //Application Components
 import { HeaderComponent } from './header/header.component';
 import { BookListComponent } from './book-list/book-list.component';
 
+//Application Services
+import { BooksService } from './services/books.service';
+import { AuthService } from './services/auth.service';
+
 @NgModule({
   declarations: [
     AppComponent,
+    BookListComponent,
     HeaderComponent,
-    BookListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebase),
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    BooksService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
