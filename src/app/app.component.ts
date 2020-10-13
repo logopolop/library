@@ -16,7 +16,7 @@ export class AppComponent {
       projectId: "mylibrary-9260c",
       storageBucket: "mylibrary-9260c.appspot.com",
       messagingSenderId: "213941965924",
-      appId: "1:213941965924:web:8bb1529894ca9a215e7b71"
+      appId: "1:213941965924:web:93ef2734836a07a15e7b71"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);  

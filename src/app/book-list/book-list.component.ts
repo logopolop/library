@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Book } from '../models/book.model';
-import { BooksService } from '../services/books.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { BookService } from '../services/book.service';
+import * as firebase from 'firebase';
 
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -16,6 +17,8 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class BookListComponent implements OnInit, OnDestroy {
 
+  isAuth: Boolean;
+
   books: any;
   bookSubscription: Subscription;
 
@@ -24,7 +27,7 @@ export class BookListComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private router: Router, private bookService: BooksService) {}
+  constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit(): void {
     this.bookSubscription = this.bookService.booksSubject.subscribe(
@@ -35,6 +38,16 @@ export class BookListComponent implements OnInit, OnDestroy {
       }
     );
     this.bookService.emitBooks();
+
+    firebase.auth().onAuthStateChanged(
+      (user) => {
+        if (user) {
+          this.isAuth = true;
+        } else {
+          this.isAuth = false;
+        }
+      }
+    );
   }
 
   onDeleteBook(book: Book) {

@@ -1,8 +1,28 @@
 .component {
-    width: 80%;
+    width: 60%;
     margin: 20px auto;
 }
 
 button {
     margin: 0px 10px;
+}
+
+.th-center{
+    justify-content: center;
+}
+
+.th-left{
+    justify-content: start;
+}
+
+.th-right{
+    justify-content: end;
+}
+
+.w-75{
+    max-width: 75px;
+}
+
+.w-100{
+    max-width: 100px;
 }

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Book } from '../models/book.model';
 import { Subject } from 'rxjs';
+import { Book } from '../models/book.model';
 import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BooksService {
+export class BookService {
 
   books: Book[] = [];
   booksSubject = new Subject<Book[]>();
